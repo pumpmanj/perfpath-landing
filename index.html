@@ -537,6 +537,24 @@
       transform: translateY(0);
     }
 
+    .waitlist-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 48px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .waitlist-btn:hover {
+      background: var(--red-dark);
+      transform: scale(1.03);
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
@@ -563,7 +581,7 @@
     <a href="#" class="nav-logo">
       <span>PERF</span><span>PATH</span>
     </a>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <a href="#waitlist-bottom" class="nav-cta">Join Waitlist</a>
   </nav>
 
   <!-- HERO -->
@@ -577,12 +595,10 @@
         PerfPath is the first platform built for every stage of the perfusion career — from your first shadow hour to board certification and beyond.
       </p>
 
-      <div id="waitlist" class="waitlist-form">
-        <input type="email" id="email-input" placeholder="Enter your email address" />
-        <button onclick="handleSubmit()">Join Waitlist</button>
+      <div class="animate-fadeInUp animate-delay-3" style="animation: fadeUp 0.6s ease 0.65s forwards; opacity:0; margin-bottom: 20px;">
+        <a href="https://tally.so/r/dWZWqr" target="_blank" class="waitlist-btn">Join the Waitlist</a>
       </div>
-      <p class="form-note">No spam. Just updates when we launch.</p>
-      <p class="success-msg" id="success-msg">✓ You're on the list. We'll be in touch.</p>
+      <p class="form-note" style="animation: fadeUp 0.6s ease 0.75s forwards; opacity:0;">No spam. Just updates when we launch.</p>
     </div>
   </section>
 
@@ -724,7 +740,7 @@
   </section>
 
   <!-- BOTTOM CTA -->
-  <section class="bottom-cta">
+  <section class="bottom-cta" id="waitlist-bottom">
     <div class="section-label reveal">Early Access</div>
     <h2 class="hero-headline reveal" style="margin-bottom:24px;">
       Be the first<br>to <span class="accent">get access.</span>
@@ -732,12 +748,10 @@
     <p class="hero-sub reveal" style="margin-bottom:40px;">
       Join the waitlist and we'll notify you the moment PerfPath opens its doors.
     </p>
-    <div class="waitlist-form reveal">
-      <input type="email" id="email-input-2" placeholder="Enter your email address" />
-      <button onclick="handleSubmit2()">Join Waitlist</button>
+    <div class="reveal" style="margin-bottom: 20px;">
+      <a href="https://tally.so/r/dWZWqr" target="_blank" class="waitlist-btn">Join the Waitlist</a>
     </div>
     <p class="form-note reveal">Built from inside the pipeline.</p>
-    <p class="success-msg" id="success-msg-2">✓ You're on the list. We'll be in touch.</p>
   </section>
 
   <!-- FOOTER -->
@@ -758,32 +772,6 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    const TALLY_URL = 'https://tally.so/r/dWZWqr';
-
-    function handleSubmit() {
-      const email = document.getElementById('email-input').value;
-      if (!email || !email.includes('@')) return;
-      window.open(TALLY_URL + '?email=' + encodeURIComponent(email), '_blank');
-      document.getElementById('success-msg').style.display = 'block';
-      document.getElementById('email-input').value = '';
-    }
-
-    function handleSubmit2() {
-      const email = document.getElementById('email-input-2').value;
-      if (!email || !email.includes('@')) return;
-      window.open(TALLY_URL + '?email=' + encodeURIComponent(email), '_blank');
-      document.getElementById('success-msg-2').style.display = 'block';
-      document.getElementById('email-input-2').value = '';
-    }
-
-    // Enter key support
-    document.getElementById('email-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') handleSubmit();
-    });
-    document.getElementById('email-input-2').addEventListener('keydown', e => {
-      if (e.key === 'Enter') handleSubmit2();
-    });
   </script>
 
 </body>
