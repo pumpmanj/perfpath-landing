@@ -312,10 +312,31 @@
 
     .pillars-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
       gap: 1px;
       background: var(--white-faint);
       border: 1px solid var(--white-faint);
+    }
+
+    .pillar-card-full {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillar-card-full {
+        grid-column: 1;
+      }
+      .pillar-card-full > div:first-child,
+      .pillar-card-full > ul {
+        grid-column: 1 !important;
+      }
+      .pillar-card-full {
+        grid-template-columns: 1fr !important;
+      }
     }
 
     .pillar-card {
@@ -684,19 +705,21 @@
         </ul>
       </div>
 
-      <div class="pillar-card">
-        <div class="pillar-badge" style="background: transparent; border: 1px solid rgba(192,57,43,0.4); color: rgba(192,57,43,0.7);">Coming Later</div>
-        <div class="pillar-number">Pillar 04</div>
-        <div class="pillar-icon" style="opacity:0.2;">⬡</div>
-        <h3 class="pillar-title" style="opacity:0.6;">Community Hub</h3>
-        <p class="pillar-desc" style="opacity:0.5;">
-          A dedicated space built around the perfusion profession. Ask clinical questions, share case experiences, and connect with perfusionists across the country — all within the same platform where you track your career.
-        </p>
-        <ul class="pillar-features">
-          <li>Peer case consultation</li>
-          <li>Protocol & priming library</li>
-          <li>Anonymized salary database</li>
-          <li>CEU tracking & career tools</li>
+      <div class="pillar-card pillar-card-full" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+        <div>
+          <div class="pillar-badge" style="background: transparent; border: 1px solid rgba(192,57,43,0.4); color: rgba(192,57,43,0.7); display: inline-block; margin-bottom: 20px;">Coming Later</div>
+          <div class="pillar-number">Pillar 04</div>
+          <div class="pillar-icon" style="opacity:0.2;">⬡</div>
+          <h3 class="pillar-title" style="opacity:0.6;">Community Hub</h3>
+          <p class="pillar-desc" style="opacity:0.5;">
+            A dedicated space built around the perfusion profession. Ask clinical questions, share case experiences, and connect with perfusionists across the country — all within the same platform where you track your career.
+          </p>
+        </div>
+        <ul class="pillar-features" style="margin-top: 60px;">
+          <li style="opacity:0.4;">Peer case consultation</li>
+          <li style="opacity:0.4;">Protocol & priming library</li>
+          <li style="opacity:0.4;">Anonymized salary database</li>
+          <li style="opacity:0.4;">CEU tracking & career tools</li>
         </ul>
       </div>
 
