@@ -594,13 +594,22 @@
     }
 
     @media (max-width: 768px) {
-      section[style*="grid-template-columns: 1fr 1fr"] > div {
+      /* The grid-template-columns lives on the inner div, not the section —
+         target it directly so the three Journey stages actually stack. */
+      div[style*="grid-template-columns: 1fr 1fr"] {
         display: flex !important;
         flex-direction: column !important;
+        align-items: stretch !important;
       }
-      section[style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-      }
+    }
+
+    /* Preview lightbox — keep the prev/next arrows from overlapping the
+       card on narrow phones, where a 340px-wide card leaves little margin. */
+    @media (max-width: 480px) {
+      .preview-card { max-width: 250px !important; }
+      #preview-prev, #preview-next { width: 32px; height: 32px; font-size: 13px; }
+      #preview-prev { left: 6px; }
+      #preview-next { right: 6px; }
     }
 
   </style>
@@ -757,7 +766,7 @@
         </div>
       </div>
       <div class="reveal" style="order: 1;">
-        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5);">
+        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5);">
           <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
             <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
@@ -902,7 +911,7 @@
 
       <!-- SLIDE 1: DASHBOARD -->
       <div class="preview-slide" style="display:block;">
-        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
+        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
           <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
             <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
@@ -985,7 +994,7 @@
 
       <!-- SLIDE 2: STUDY -->
       <div class="preview-slide" style="display:none;">
-        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
+        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
           <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
             <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
@@ -1027,7 +1036,7 @@
 
       <!-- SLIDE 3: PROFILE -->
       <div class="preview-slide" style="display:none;">
-        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
+        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
           <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
             <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
@@ -1095,7 +1104,7 @@
 
       <!-- SLIDE 4: LOG A CASE -->
       <div class="preview-slide" style="display:none;">
-        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
+        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
           <div style="background: #C0392B; height: 3px;"></div>
           <div style="padding: 16px; background: #111c2d;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
