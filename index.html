@@ -592,6 +592,17 @@
       .waitlist-form input { border-right: 1px solid rgba(240,240,240,0.15); border-bottom: none; }
       footer { padding: 24px 20px; flex-direction: column; text-align: center; }
     }
+
+    @media (max-width: 768px) {
+      section[style*="grid-template-columns: 1fr 1fr"] > div {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      section[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -602,40 +613,40 @@
     <a href="#" class="nav-logo">
       <span>PERF</span><span>PATH</span>
     </a>
-    <a href="#waitlist-bottom" class="nav-cta">Join Waitlist</a>
+    <a href="https://app.perfpath.com/login" style="font-family: Oswald,sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(240,240,240,0.4); text-decoration:none; margin-right:20px;" >Log In</a><a href="https://app.perfpath.com/signup" class="nav-cta">Sign Up — Free</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Coming Soon</div>
+      <div class="hero-eyebrow">Student Access — Now Live</div>
       <h1 class="hero-headline">
-        Over 5,000<br>perfusionists and<br><span class="accent">zero dedicated</span><br>career tools.
+        Every case.<br>Every hour.<br><span class="accent">All logged.</span>
       </h1>
       <p class="hero-sub">
-        PerfPath is the first platform built for every stage of the perfusion career — from your first shadow hour to board certification and beyond.
+        Log every case. Track your ABCP progress. Reference clinical protocols between cases. PerfPath is built for the perfusion student who takes their training seriously.
       </p>
 
       <div class="animate-fadeInUp animate-delay-3" style="animation: fadeUp 0.6s ease 0.65s forwards; opacity:0; margin-bottom: 20px;">
-        <a href="https://tally.so/r/dWZWqr" target="_blank" class="waitlist-btn">Join the Waitlist</a>
+        <a href="https://app.perfpath.com/signup" class="waitlist-btn">Try PerfPath Free</a>
       </div>
-      <p class="form-note" style="animation: fadeUp 0.6s ease 0.75s forwards; opacity:0;">No spam. Just updates when we launch.</p>
+
     </div>
   </section>
 
   <!-- STAT BAR -->
   <div class="stat-bar reveal">
     <div class="stat-item">
-      <div class="stat-number">5<span>,</span>000<span>+</span></div>
-      <div class="stat-label">Certified Perfusionists and Counting</div>
+      <div class="stat-number">75</div>
+      <div class="stat-label">ABCP Case Minimums Tracked Automatically</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">305</div>
-      <div class="stat-label">New Graduates in 2025 — A Record High</div>
+      <div class="stat-number">15<span>+</span></div>
+      <div class="stat-label">Clinical Protocols Built for the OR Hallway</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">0</div>
-      <div class="stat-label">Tools Built Specifically for Perfusionists</div>
+      <div class="stat-label">Spreadsheets Required</div>
     </div>
   </div>
 
@@ -643,119 +654,216 @@
   <section class="problem reveal">
     <div class="section-label">The Problem</div>
     <h2 class="problem-headline">
-      Every perfusionist faces the same<br>fragmented, manual documentation problem
+      Perfusion students are tracking cases<br>in spreadsheets. In 2026.
     </h2>
     <p class="problem-body">
-      Shadow hours logged on paper. Clinical cases tracked in spreadsheets. CEUs scattered across emails. Hospital research done through word of mouth. The perfusion profession is one of the most demanding in medicine — and it has been operating without the tools it deserves.
+      You are training for one of the most technically demanding roles in medicine. You are managing 75+ case minimums across six subcategories, preparing for board certification, and trying to build clinical knowledge in the margins of 12-hour OR days. The tools you have been given to do all of this are a notebook and a Google Sheet. PerfPath changes that.
     </p>
   </section>
 
   <!-- PILLARS -->
-  <section class="pillars reveal">
-    <div style="text-align:center; margin-bottom: 48px;">
-      <div class="section-label">The Platform</div>
-      <h2 class="problem-headline" style="margin-bottom:0">Four pillars. One path.</h2>
-    </div>
-
-    <div class="pillars-grid">
-
-      <div class="pillar-card">
-        <div class="pillar-number">Pillar 01</div>
-        <div class="pillar-icon">◈</div>
-        <h3 class="pillar-title">Shadow Tracker</h3>
-        <p class="pillar-desc">
-          For pre-applicants building their application. Log every shadowing experience, track hours, and generate a clean PDF for program submissions.
-        </p>
-        <ul class="pillar-features">
-          <li>Shadowing hour log</li>
-          <li>Program requirement tracker</li>
-          <li>CCP finder map</li>
-          <li>Auto-generated shadow PDF</li>
-        </ul>
-      </div>
-
-      <div class="pillar-card">
-        <div class="pillar-badge">Core Feature</div>
-        <div class="pillar-number">Pillar 02</div>
-        <div class="pillar-icon">◉</div>
-        <h3 class="pillar-title">Case Logger</h3>
-        <p class="pillar-desc">
-          For students in accredited programs. ABCP-compliant case logging with subcategory tracking, CCP number verification, and one-tap PDF export.
-        </p>
-        <ul class="pillar-features">
-          <li>75-case progress tracker</li>
-          <li>Pediatric & ECMO subcategories</li>
-          <li>Instructor CCP verification</li>
-          <li>ABCP-format PDF export</li>
-        </ul>
-      </div>
-
-      <div class="pillar-card">
-        <div class="pillar-number">Pillar 03</div>
-        <div class="pillar-icon">◆</div>
-        <h3 class="pillar-title">Hospital Directory</h3>
-        <p class="pillar-desc">
-          For perfusionists at every stage. A crowdsourced database of hospitals — equipment, case mix, call structure, city life, and hiring status.
-        </p>
-        <ul class="pillar-features">
-          <li>Pump & equipment by hospital</li>
-          <li>Call structure & case volume</li>
-          <li>City and lifestyle overview</li>
-          <li>Hiring status & job leads</li>
-        </ul>
-      </div>
-
-      <div class="pillar-card pillar-card-full" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
-        <div>
-          <div class="pillar-badge" style="background: transparent; border: 1px solid rgba(192,57,43,0.4); color: rgba(192,57,43,0.7); display: inline-block; margin-bottom: 20px;">Coming Later</div>
-          <div class="pillar-number">Pillar 04</div>
-          <div class="pillar-icon" style="opacity:0.2;">⬡</div>
-          <h3 class="pillar-title" style="opacity:0.6;">Community Hub</h3>
-          <p class="pillar-desc" style="opacity:0.5;">
-            A dedicated space built around the perfusion profession. Ask clinical questions, share case experiences, and connect with perfusionists across the country — all within the same platform where you track your career.
-          </p>
-        </div>
-        <ul class="pillar-features" style="margin-top: 60px;">
-          <li style="opacity:0.4;">Peer case consultation</li>
-          <li style="opacity:0.4;">Protocol & priming library</li>
-          <li style="opacity:0.4;">Anonymized salary database</li>
-          <li style="opacity:0.4;">CEU tracking & career tools</li>
-        </ul>
-      </div>
-
+  <!-- JOURNEY SECTION -->
+  <section class="pillars reveal" style="padding-bottom: 0;">
+    <div style="text-align:center; margin-bottom: 64px;">
+      <div class="section-label">The Journey</div>
+      <h2 class="problem-headline" style="margin-bottom: 16px;">One career. One platform.<br>Every stage covered.</h2>
+      <p style="color: rgba(240,240,240,0.4); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.7;">
+        PerfPath is built to grow with you — from the moment you decide perfusion is your path to the day you sign your twentieth year in the OR.
+      </p>
     </div>
   </section>
 
-  <!-- WHO -->
-  <section class="who">
-    <div class="who-inner">
-      <div class="who-text reveal">
-        <div class="section-label">Who It's For</div>
-        <h2 class="who-headline">Built for the entire perfusion pipeline</h2>
-        <p class="who-body">
-          Whether you're exploring perfusion for the first time or you've been in the OR for twenty years — PerfPath was built for you. Every stage of the career has a home here.
+  <!-- STAGE 1: PRE-PERFUSION -->
+  <section style="padding: 0 40px 80px; max-width: 1100px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div class="reveal">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.3); display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: rgba(192,57,43,0.6); letter-spacing: 0.1em;">01</div>
+          <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(192,57,43,0.6);">Pre-Perfusion</span>
+          <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,240,240,0.2); border: 1px solid rgba(255,255,255,0.1); padding: 2px 8px;">Coming Soon</span>
+        </div>
+        <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Getting in.</h3>
+        <p style="color: rgba(240,240,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
+          Before your first case. Before your first class. PerfPath helps you build the application that gets you accepted — shadow hours logged, all 23 accredited programs compared side by side, requirements tracked against each one.
         </p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> Shadow hour log with PDF export
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> All 23 program requirements, side by side
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> CCP finder to connect with perfusionists in your area
+          </li>
+        </ul>
       </div>
-      <div class="who-stages reveal">
-        <div class="stage">
-          <div class="stage-dot"></div>
-          <div>
-            <div class="stage-title">Pre-Applicant</div>
-            <div class="stage-desc">Building shadow hours, researching programs, finding perfusionists to connect with.</div>
+      <div class="reveal">
+        <div style="position: relative; background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.35);">
+          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
+          </div>
+          <div style="padding: 20px; background: #111c2d;">
+            <div style="height: 10px; width: 55%; background: rgba(255,255,255,0.07); border-radius: 2px; margin-bottom: 14px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px;"></div>
+          </div>
+          <div style="position: absolute; inset: 0; background: rgba(19,31,56,0.62); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center;">
+            <div style="width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </div>
+            <div>
+              <div style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 6px;">In Development</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.5;">Shadow Tracker — hour logging by facility and preceptor</div>
+            </div>
           </div>
         </div>
-        <div class="stage">
-          <div class="stage-dot"></div>
-          <div>
-            <div class="stage-title">Student</div>
-            <div class="stage-desc">Enrolled in an accredited program, logging cases, preparing for board certification.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 2: STUDENT — LIVE -->
+  <section style="background: rgba(192,57,43,0.04); border-top: 1px solid rgba(192,57,43,0.12); border-bottom: 1px solid rgba(192,57,43,0.12); padding: 80px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div class="reveal" style="order: 2;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #C0392B; display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: #C0392B; letter-spacing: 0.1em;">02</div>
+          <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0392B;">Student</span>
+          <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #C0392B; border: 1px solid rgba(192,57,43,0.4); padding: 2px 8px; background: rgba(192,57,43,0.08);">Live Now</span>
+        </div>
+        <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Earning it.</h3>
+        <p style="color: rgba(240,240,240,0.6); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
+          You're in. Every case logged, every ABCP minimum tracked automatically across all six subcategories. When it's time to submit — one tap exports a board-ready PDF with your full case history, CCP instructor numbers, and candidate attestation. No spreadsheets. No notebooks.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
+            <span style="color: #C0392B;">—</span> ABCP case minimums tracked across all six subcategories
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
+            <span style="color: #C0392B;">—</span> One-tap PDF export — formatted, attested, board-ready
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
+            <span style="color: #C0392B;">—</span> 15 clinical protocols built for the OR hallway
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
+            <span style="color: #C0392B;">—</span> Goals, calendar, and lecture notes in one place
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://app.perfpath.com/signup" style="display: inline-block; background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 12px; padding: 14px 28px; text-decoration: none;">Try PerfPath Free</a>
+          <a href="https://app.perfpath.com/?demo=true" style="display: inline-block; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); font-family: Oswald, sans-serif; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; font-size: 12px; padding: 14px 28px; text-decoration: none;">See It Live →</a>
+        </div>
+      </div>
+      <div class="reveal" style="order: 1;">
+        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5);">
+          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
+          </div>
+          <div style="padding: 0; background: #111c2d;">
+            <div style="background: #C0392B; height: 3px;"></div>
+            <div style="padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                <div>
+                  <div style="font-size: 9px; color: rgba(192,57,43,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">● Student — Active</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 18px; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase;">Good Evening,<br>Demo</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-family: Oswald, sans-serif; font-size: 22px; font-weight: 700; color: white;">17<span style="color:#C0392B;">:</span>30</div>
+                  <div style="font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em;">SAT · JUL 4</div>
+                </div>
+              </div>
+              <div style="background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 11px; padding: 10px; text-align: center; margin-bottom: 12px;">+ LOG CASE</div>
+              <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 12px; margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <span style="font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase;">ABCP Progress</span>
+                  <span style="font-size: 9px; color: rgba(192,57,43,0.7); border: 1px solid rgba(192,57,43,0.2); padding: 2px 6px;">40 / 75</span>
+                </div>
+                <div style="margin-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">Total Cases</span>
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">40 / 75</span>
+                  </div>
+                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
+                    <div style="width: 53%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
+                  </div>
+                </div>
+                <div style="margin-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">Pediatric</span>
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">7 / 10</span>
+                  </div>
+                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
+                    <div style="width: 70%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">ECMO / VAD</span>
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">3 / 5</span>
+                  </div>
+                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
+                    <div style="width: 60%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="stage">
-          <div class="stage-dot"></div>
-          <div>
-            <div class="stage-title">Certified CCP</div>
-            <div class="stage-desc">Practicing perfusionist managing recertification, career growth, and professional development.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 3: CCP -->
+  <section style="padding: 80px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div class="reveal">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.3); display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: rgba(192,57,43,0.6); letter-spacing: 0.1em;">03</div>
+          <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(192,57,43,0.6);">Certified CCP</span>
+          <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,240,240,0.2); border: 1px solid rgba(255,255,255,0.1); padding: 2px 8px;">Coming Soon</span>
+        </div>
+        <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Owning it.</h3>
+        <p style="color: rgba(240,240,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
+          Board certified and building a career. PerfPath tracks your CEU requirements, notifies you when jobs open in your target region, and gives you real crowdsourced data on every hospital before you sign — equipment, case volume, call structure, and lifestyle.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> CEU requirement tracking and renewal reminders
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> Job opening notifications by region
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> Hospital directory — equipment, culture, and hiring status
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
+            <span style="color: rgba(192,57,43,0.5);">—</span> Anonymized salary data by region and experience
+          </li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div style="position: relative; background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.35);">
+          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
+          </div>
+          <div style="padding: 20px; background: #111c2d;">
+            <div style="height: 10px; width: 55%; background: rgba(255,255,255,0.07); border-radius: 2px; margin-bottom: 14px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
+            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px;"></div>
+          </div>
+          <div style="position: absolute; inset: 0; background: rgba(19,31,56,0.62); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center;">
+            <div style="width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </div>
+            <div>
+              <div style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 6px;">In Development</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.5;">Hospital Directory — equipment, culture, and hiring status by facility</div>
+            </div>
           </div>
         </div>
       </div>
@@ -764,15 +872,15 @@
 
   <!-- BOTTOM CTA -->
   <section class="bottom-cta" id="waitlist-bottom">
-    <div class="section-label reveal">Early Access</div>
+    <div class="section-label reveal">Get Started</div>
     <h2 class="hero-headline reveal" style="margin-bottom:24px;">
-      Be the first<br>to <span class="accent">get access.</span>
+      Your perfusion career.<br><span class="accent">One path.</span>
     </h2>
     <p class="hero-sub reveal" style="margin-bottom:40px;">
-      Join the waitlist and we'll notify you the moment PerfPath opens its doors.
+      You're already doing the work. PerfPath makes sure none of it gets lost.
     </p>
     <div class="reveal" style="margin-bottom: 20px;">
-      <a href="https://tally.so/r/dWZWqr" target="_blank" class="waitlist-btn">Join the Waitlist</a>
+      <a href="https://app.perfpath.com/signup" class="waitlist-btn">Try PerfPath Free</a>
     </div>
     <p class="form-note reveal">Built from inside the pipeline.</p>
   </section>
