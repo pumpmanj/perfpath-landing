@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PerfPath — Your Perfusion Career. One Path.</title>
   <meta name="description" content="The first platform built for the perfusion career pipeline. Shadow tracking, case logging, and a hospital directory — all in one place." />
-  <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -595,22 +594,180 @@
     }
 
     @media (max-width: 768px) {
-      /* The grid-template-columns lives on the inner div, not the section —
-         target it directly so the three Journey stages actually stack. */
-      div[style*="grid-template-columns: 1fr 1fr"] {
+      section[style*="grid-template-columns: 1fr 1fr"] > div {
         display: flex !important;
         flex-direction: column !important;
-        align-items: stretch !important;
+      }
+      section[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
       }
     }
 
-    /* Preview lightbox — keep the prev/next arrows from overlapping the
-       card on narrow phones, where a 340px-wide card leaves little margin. */
-    @media (max-width: 480px) {
-      .preview-card { max-width: 250px !important; }
-      #preview-prev, #preview-next { width: 32px; height: 32px; font-size: 13px; }
-      #preview-prev { left: 6px; }
-      #preview-next { right: 6px; }
+    /* ── PHONE MOCKUP (shared by all feature slides) ── */
+    .phone-frame {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.45);
+    }
+    .phone-chrome {
+      background: #0d1520;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phone-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+    .phone-bar { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; }
+    .phone-body { background: #111c2d; }
+    .phone-red-strip { background: #C0392B; height: 3px; }
+
+    /* ── FEATURE SLIDESHOW ── */
+    .feature-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 4px 4px 12px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .feature-track::-webkit-scrollbar { display: none; }
+
+    .feature-slide {
+      flex: 0 0 260px;
+      scroll-snap-align: center;
+    }
+
+    .feature-caption { margin-top: 16px; text-align: center; padding: 0 8px; }
+    .feature-caption-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .feature-caption-desc {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .slide-arrow:hover { border-color: var(--red); color: var(--red); }
+    .slide-arrow-left { left: 0; }
+    .slide-arrow-right { right: 0; }
+
+    .feature-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.2s;
+    }
+
+    @media (max-width: 768px) {
+      .slide-arrow { display: none; }
+      .feature-track { padding-left: 20px; padding-right: 20px; scroll-padding-left: 20px; }
+      .feature-slide { flex-basis: 220px; }
+    }
+
+    /* ── COMING SOON CARDS ── */
+    .coming-soon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .coming-soon-card {
+      background: var(--navy-dark);
+      border: 1px solid var(--white-faint);
+      padding: 28px 24px;
+    }
+    .coming-soon-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .coming-soon-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(192,57,43,0.7);
+    }
+    .coming-soon-badge {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2px 7px;
+    }
+    .coming-soon-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .coming-soon-desc {
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .coming-soon-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .coming-soon-list li {
+      font-size: 0.75rem;
+      color: rgba(240,240,240,0.35);
+      padding-left: 14px;
+      position: relative;
+    }
+    .coming-soon-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: rgba(192,57,43,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .coming-soon-grid { grid-template-columns: 1fr; }
     }
 
   </style>
@@ -631,10 +788,10 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">Student Access — Now Live</div>
       <h1 class="hero-headline">
-        Every case.<br>Every hour.<br><span class="accent">All logged.</span>
+        The clinical tool<br>every perfusion student<br><span class="accent">actually needs.</span>
       </h1>
       <p class="hero-sub">
-        Log every case. Track your ABCP progress. Reference clinical protocols between cases. PerfPath is built for the perfusion student who takes their training seriously.
+        Log every case. Debrief every simulation. Track your ABCP progress. PerfPath is built for the perfusion student who takes their training seriously.
       </p>
 
       <div class="animate-fadeInUp animate-delay-3" style="animation: fadeUp 0.6s ease 0.65s forwards; opacity:0; margin-bottom: 20px;">
@@ -675,84 +832,35 @@
   <!-- JOURNEY SECTION -->
   <section class="pillars reveal" style="padding-bottom: 0;">
     <div style="text-align:center; margin-bottom: 64px;">
-      <div class="section-label">The Journey</div>
-      <h2 class="problem-headline" style="margin-bottom: 16px;">One career. One platform.<br>Every stage covered.</h2>
-      <p style="color: rgba(240,240,240,0.4); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.7;">
-        PerfPath is built to grow with you — from the moment you decide perfusion is your path to the day you sign your twentieth year in the OR.
+      <div class="section-label">Live Now</div>
+      <h2 class="problem-headline" style="margin-bottom: 16px;">Built for where you are.<br>Live for students, today.</h2>
+      <p style="color: rgba(240,240,240,0.4); font-size: 1rem; max-width: 540px; margin: 0 auto; line-height: 1.7;">
+        Everything below is real and working right now. PerfPath is also being built out for the stage before this one and the stage after — here's where that's headed.
       </p>
     </div>
   </section>
 
-  <!-- STAGE 1: PRE-PERFUSION -->
-  <section style="padding: 0 40px 80px; max-width: 1100px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-      <div class="reveal">
-        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.3); display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: rgba(192,57,43,0.6); letter-spacing: 0.1em;">01</div>
-          <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(192,57,43,0.6);">Pre-Perfusion</span>
-          <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,240,240,0.2); border: 1px solid rgba(255,255,255,0.1); padding: 2px 8px;">Coming Soon</span>
-        </div>
-        <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Getting in.</h3>
-        <p style="color: rgba(240,240,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
-          Before your first case. Before your first class. PerfPath helps you build the application that gets you accepted — shadow hours logged, all 23 accredited programs compared side by side, requirements tracked against each one.
-        </p>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> Shadow hour log with PDF export
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> All 23 program requirements, side by side
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> CCP finder to connect with perfusionists in your area
-          </li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div style="position: relative; background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.35);">
-          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
-            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
-          </div>
-          <div style="padding: 20px; background: #111c2d;">
-            <div style="height: 10px; width: 55%; background: rgba(255,255,255,0.07); border-radius: 2px; margin-bottom: 14px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px;"></div>
-          </div>
-          <div style="position: absolute; inset: 0; background: rgba(19,31,56,0.62); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center;">
-            <div style="width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            </div>
-            <div>
-              <div style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 6px;">In Development</div>
-              <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.5;">Shadow Tracker — hour logging by facility and preceptor</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STAGE 2: STUDENT — LIVE -->
+  <!-- STUDENT — LIVE NOW (leads, since this is the only stage that's real today) -->
   <section style="background: rgba(192,57,43,0.04); border-top: 1px solid rgba(192,57,43,0.12); border-bottom: 1px solid rgba(192,57,43,0.12); padding: 80px 40px;">
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
       <div class="reveal" style="order: 2;">
         <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #C0392B; display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: #C0392B; letter-spacing: 0.1em;">02</div>
           <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0392B;">Student</span>
           <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #C0392B; border: 1px solid rgba(192,57,43,0.4); padding: 2px 8px; background: rgba(192,57,43,0.08);">Live Now</span>
         </div>
         <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Earning it.</h3>
         <p style="color: rgba(240,240,240,0.6); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
-          You're in. Every case logged, every ABCP minimum tracked automatically across all six subcategories. When it's time to submit — one tap exports a board-ready PDF with your full case history, CCP instructor numbers, and candidate attestation. No spreadsheets. No notebooks.
+          You're in. Every case logged, every ABCP minimum tracked automatically across all six subcategories — and every simulation session tracked right alongside it, with what went well and what to work on. When it's time to submit, one tap exports a board-ready PDF built to ABCP's current case record format. No spreadsheets. No notebooks.
         </p>
         <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; gap: 10px;">
           <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
             <span style="color: #C0392B;">—</span> ABCP case minimums tracked across all six subcategories
           </li>
           <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
-            <span style="color: #C0392B;">—</span> One-tap PDF export — formatted, attested, board-ready
+            <span style="color: #C0392B;">—</span> One-tap PDF export — built to ABCP's current PBSE Case Record format
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
+            <span style="color: #C0392B;">—</span> Simulation log with Plus/Delta debriefing after every session
           </li>
           <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.6); font-size: 0.85rem;">
             <span style="color: #C0392B;">—</span> 15 clinical protocols built for the OR hallway
@@ -763,11 +871,10 @@
         </ul>
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a href="https://app.perfpath.com/signup" style="display: inline-block; background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 12px; padding: 14px 28px; text-decoration: none;">Try PerfPath Free</a>
-          <a href="#" data-open-preview style="display: inline-block; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); font-family: Oswald, sans-serif; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; font-size: 12px; padding: 14px 28px; text-decoration: none;">Preview The App →</a>
         </div>
       </div>
       <div class="reveal" style="order: 1;">
-        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5);">
+        <div style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5);">
           <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
             <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
@@ -775,50 +882,47 @@
           <div style="padding: 0; background: #111c2d;">
             <div style="background: #C0392B; height: 3px;"></div>
             <div style="padding: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                <div>
-                  <div style="font-size: 9px; color: rgba(192,57,43,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">● Student — Active</div>
-                  <div style="font-family: Oswald, sans-serif; font-size: 18px; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase;">Good Evening,<br>Demo</div>
-                </div>
+
+              <!-- Clock — right-aligned, no greeting text, matching the real rebuilt Home -->
+              <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
                 <div style="text-align: right;">
-                  <div style="font-family: Oswald, sans-serif; font-size: 22px; font-weight: 700; color: white;">17<span style="color:#C0392B;">:</span>30</div>
-                  <div style="font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em;">SAT · JUL 4</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 24px; font-weight: 700; color: white; letter-spacing: 0.05em;">17<span style="color:#C0392B;">:</span>30</div>
+                  <div style="font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.12em; margin-top: 2px;">SAT · AUG 8</div>
                 </div>
               </div>
-              <div style="background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 11px; padding: 10px; text-align: center; margin-bottom: 12px;">+ LOG CASE</div>
-              <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 12px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <span style="font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase;">ABCP Progress</span>
-                  <span style="font-size: 9px; color: rgba(192,57,43,0.7); border: 1px solid rgba(192,57,43,0.2); padding: 2px 6px;">40 / 75</span>
+
+              <!-- Dominant stat card -->
+              <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 20px 12px; text-align: center; margin-bottom: 10px; box-shadow: 0 8px 24px rgba(192,57,43,0.1);">
+                <div style="font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">Cases Logged</div>
+                <div style="font-family: Oswald, sans-serif; font-weight: 700; color: white; line-height: 1;">
+                  <span style="font-size: 34px;">40</span><span style="font-size: 14px; color: rgba(255,255,255,0.25);"> / 75</span>
                 </div>
-                <div style="margin-bottom: 8px;">
-                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">Total Cases</span>
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">40 / 75</span>
-                  </div>
-                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
-                    <div style="width: 53%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
-                  </div>
-                </div>
-                <div style="margin-bottom: 8px;">
-                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">Pediatric</span>
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">7 / 10</span>
-                  </div>
-                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
-                    <div style="width: 70%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
-                  </div>
-                </div>
-                <div>
-                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">ECMO / VAD</span>
-                    <span style="font-size: 9px; color: rgba(255,255,255,0.4);">3 / 5</span>
-                  </div>
-                  <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;">
-                    <div style="width: 60%; height: 3px; background: #C0392B; border-radius: 2px;"></div>
-                  </div>
+                <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; max-width: 140px; margin: 12px auto 0;">
+                  <div style="width: 53%; height: 4px; background: #C0392B; border-radius: 4px; box-shadow: 0 0 6px rgba(192,57,43,0.6);"></div>
                 </div>
               </div>
+
+              <!-- Two-button row: Clinical / Simulation -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+                <div style="background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px; padding: 11px 4px; text-align: center; box-shadow: 0 6px 16px rgba(192,57,43,0.3);">+ Log Case</div>
+                <div style="border: 1px solid rgba(192,57,43,0.4); color: #C0392B; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px; padding: 11px 4px; text-align: center;">+ Log Sim</div>
+              </div>
+
+              <!-- Recency line -->
+              <div style="text-align: center; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 0.05em; margin-bottom: 10px;">Last case 2d ago · Last sim today</div>
+
+              <!-- Calendar / Goals quiet links -->
+              <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                <div style="padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                  <span style="font-size: 10px; color: rgba(255,255,255,0.45);">Calendar</span>
+                  <span style="font-size: 10px; color: rgba(255,255,255,0.15);">›</span>
+                </div>
+                <div style="padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 10px; color: rgba(255,255,255,0.45);">Goals</span>
+                  <span style="font-size: 10px; color: rgba(255,255,255,0.15);">›</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -826,55 +930,225 @@
     </div>
   </section>
 
-  <!-- STAGE 3: CCP -->
-  <section style="padding: 80px 40px;">
-    <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-      <div class="reveal">
-        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.3); display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 11px; font-weight: 700; color: rgba(192,57,43,0.6); letter-spacing: 0.1em;">03</div>
-          <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(192,57,43,0.6);">Certified CCP</span>
-          <span style="font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,240,240,0.2); border: 1px solid rgba(255,255,255,0.1); padding: 2px 8px;">Coming Soon</span>
+  <!-- FEATURE SLIDESHOW -->
+  <section style="padding: 100px 0; position: relative; z-index: 1;">
+    <div style="text-align:center; margin-bottom: 48px; padding: 0 40px;">
+      <div class="section-label">The App</div>
+      <h2 class="problem-headline" style="margin-bottom: 16px;">Every screen, built for<br>the OR hallway.</h2>
+      <p style="color: rgba(240,240,240,0.4); font-size: 1rem; max-width: 480px; margin: 0 auto; line-height: 1.7;">
+        Swipe through — or use the arrows.
+      </p>
+    </div>
+
+    <div style="position: relative; max-width: 1100px; margin: 0 auto; padding: 0 40px;">
+      <button class="slide-arrow slide-arrow-left" aria-label="Previous screen" onclick="document.getElementById('feature-track').scrollBy({left: -300, behavior: 'smooth'})">‹</button>
+      <button class="slide-arrow slide-arrow-right" aria-label="Next screen" onclick="document.getElementById('feature-track').scrollBy({left: 300, behavior: 'smooth'})">›</button>
+
+      <div id="feature-track" class="feature-track">
+
+        <!-- Slide 1: Home -->
+        <div class="feature-slide">
+          <div class="phone-frame">
+            <div class="phone-chrome"><div class="phone-dot"></div><div class="phone-bar"></div></div>
+            <div class="phone-body">
+              <div class="phone-red-strip"></div>
+              <div style="padding: 16px;">
+                <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+                  <div style="text-align: right;">
+                    <div style="font-family: Oswald, sans-serif; font-size: 18px; font-weight: 700; color: white;">08<span style="color:#C0392B;">:</span>14</div>
+                    <div style="font-size: 7px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em;">SUN · AUG 9</div>
+                  </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 14px 10px; text-align: center; margin-bottom: 6px;">
+                  <div style="font-size: 7px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px;">Cases Logged</div>
+                  <div style="font-family: Oswald, sans-serif; font-weight: 700; color: white;"><span style="font-size: 24px;">40</span><span style="font-size: 11px; color: rgba(255,255,255,0.25);"> / 75</span></div>
+                  <div style="height: 3px; background: rgba(255,255,255,0.1); border-radius: 3px; max-width: 100px; margin: 6px auto 0;"><div style="width: 53%; height: 3px; background: #C0392B; border-radius: 3px;"></div></div>
+                  <div style="font-size: 6px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px;">Hide Breakdown ^</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 10px; margin-bottom: 6px;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="font-size: 7px; color: rgba(255,255,255,0.4);">Pediatric</span><span style="font-size: 7px; color: rgba(255,255,255,0.4);">7 / 10</span></div>
+                  <div style="height: 2px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-bottom: 6px;"><div style="width: 70%; height: 2px; background: #C0392B; border-radius: 2px;"></div></div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="font-size: 7px; color: rgba(255,255,255,0.4);">ECMO / VAD</span><span style="font-size: 7px; color: rgba(255,255,255,0.4);">3 / 5</span></div>
+                  <div style="height: 2px; background: rgba(255,255,255,0.08); border-radius: 2px;"><div style="width: 60%; height: 2px; background: #C0392B; border-radius: 2px;"></div></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+                  <div style="background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 9px; padding: 9px 2px; text-align: center;">+ Log Case</div>
+                  <div style="border: 1px solid rgba(192,57,43,0.4); color: #C0392B; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 9px; padding: 9px 2px; text-align: center;">+ Log Sim</div>
+                </div>
+                <div style="text-align: center; font-size: 6px; color: rgba(255,255,255,0.2); margin-bottom: 8px;">Last case <span style="color: rgba(255,255,255,0.4);">2mo ago</span></div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                  <div style="padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06);"><span style="font-size: 8px; color: rgba(255,255,255,0.4);">Calendar</span><span style="font-size: 8px; color: rgba(255,255,255,0.15);">›</span></div>
+                  <div style="padding: 8px 10px; display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 8px; color: rgba(255,255,255,0.4);">Goals</span><span style="font-size: 8px; color: rgba(255,255,255,0.15);">›</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-caption">
+            <div class="feature-caption-title">Home</div>
+            <div class="feature-caption-desc">One glance: where you stand toward 75, a breakdown by category, and the one thing to do next.</div>
+          </div>
         </div>
-        <h3 style="font-family: Oswald, sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #f0f0f0; margin-bottom: 16px; line-height: 1.1;">Owning it.</h3>
-        <p style="color: rgba(240,240,240,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;">
-          Board certified and building a career. PerfPath tracks your CEU requirements, notifies you when jobs open in your target region, and gives you real crowdsourced data on every hospital before you sign — equipment, case volume, call structure, and lifestyle.
-        </p>
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> CEU requirement tracking and renewal reminders
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> Job opening notifications by region
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> Hospital directory — equipment, culture, and hiring status
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px; color: rgba(240,240,240,0.4); font-size: 0.85rem;">
-            <span style="color: rgba(192,57,43,0.5);">—</span> Anonymized salary data by region and experience
-          </li>
-        </ul>
+
+        <!-- Slide 2: Simulation Log -->
+        <div class="feature-slide">
+          <div class="phone-frame">
+            <div class="phone-chrome"><div class="phone-dot"></div><div class="phone-bar"></div></div>
+            <div class="phone-body">
+              <div class="phone-red-strip"></div>
+              <div style="padding: 16px;">
+                <div style="font-size: 8px; color: rgba(170,130,255,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px;">Log Session · Simulation</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-bottom: 10px;">
+                  <div style="border: 1px solid #C0392B; background: rgba(192,57,43,0.1); color: #C0392B; font-size: 7px; text-align: center; padding: 7px 2px; text-transform: uppercase; font-family: Oswald, sans-serif;">Fundamentals</div>
+                  <div style="border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); font-size: 7px; text-align: center; padding: 7px 2px; text-transform: uppercase; font-family: Oswald, sans-serif;">Crisis Mgmt</div>
+                  <div style="border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); font-size: 7px; text-align: center; padding: 7px 2px; text-transform: uppercase; font-family: Oswald, sans-serif;">ECMO</div>
+                </div>
+                <div style="margin-bottom: 8px;">
+                  <div style="font-size: 8px; color: rgba(120,220,150,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">Plus — What Went Well</div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); height: 30px;"></div>
+                </div>
+                <div>
+                  <div style="font-size: 8px; color: rgba(240,190,100,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">Delta — What To Improve</div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); height: 30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-caption">
+            <div class="feature-caption-title">Simulation Log</div>
+            <div class="feature-caption-desc">Plus/Delta debriefing after every sim — what worked, what to fix next time.</div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Study -->
+        <div class="feature-slide">
+          <div class="phone-frame">
+            <div class="phone-chrome"><div class="phone-dot"></div><div class="phone-bar"></div></div>
+            <div class="phone-body">
+              <div class="phone-red-strip"></div>
+              <div style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="background: #160f0f; border: 1px solid rgba(192,57,43,0.2); padding: 9px 10px;">
+                  <div style="font-size: 6.5px; color: rgba(192,57,43,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px;">Clinical Reference</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 10px; color: white; text-transform: uppercase; font-weight: 700;">Protocol Library</div>
+                  <div style="font-size: 7px; color: rgba(255,255,255,0.2); margin-top: 2px;">15 topics</div>
+                </div>
+                <div style="background: #0f1216; border: 1px solid rgba(100,150,255,0.15); padding: 9px 10px;">
+                  <div style="font-size: 6.5px; color: rgba(100,150,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px;">From Your Cases</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 10px; color: white; text-transform: uppercase; font-weight: 700;">Case Notes</div>
+                  <div style="font-size: 7px; color: rgba(255,255,255,0.2); margin-top: 2px;">18 notes</div>
+                </div>
+                <div style="background: #0c1410; border: 1px solid rgba(50,180,120,0.15); padding: 9px 10px;">
+                  <div style="font-size: 6.5px; color: rgba(50,180,120,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px;">Personal Notes</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 10px; color: white; text-transform: uppercase; font-weight: 700;">Lecture Notes</div>
+                  <div style="font-size: 7px; color: rgba(255,255,255,0.2); margin-top: 2px;">5 notes</div>
+                </div>
+                <div style="background: #120f18; border: 1px solid rgba(160,110,255,0.18); padding: 9px 10px;">
+                  <div style="font-size: 6.5px; color: rgba(170,130,255,0.8); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px;">Plus / Delta</div>
+                  <div style="font-family: Oswald, sans-serif; font-size: 10px; color: white; text-transform: uppercase; font-weight: 700;">Simulation Log</div>
+                  <div style="font-size: 7px; color: rgba(255,255,255,0.2); margin-top: 2px;">0 sessions</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-caption">
+            <div class="feature-caption-title">Study</div>
+            <div class="feature-caption-desc">Protocols, case notes, lecture notes, and simulation history — one library.</div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Cases -->
+        <div class="feature-slide">
+          <div class="phone-frame">
+            <div class="phone-chrome"><div class="phone-dot"></div><div class="phone-bar"></div></div>
+            <div class="phone-body">
+              <div class="phone-red-strip"></div>
+              <div style="padding: 14px;">
+                <div style="font-size: 7px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; margin-bottom: 8px;">40 total <span style="color: #C0392B;">· 4 flagged</span> · 3 hospitals</div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 7px 9px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                  <span style="color: #C0392B; font-size: 10px;">⇄</span>
+                  <div>
+                    <div style="font-size: 7px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em;">Repeat Last Case</div>
+                    <div style="font-size: 6.5px; color: rgba(255,255,255,0.2);">St. Mary Medical Center · CABG</div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;">
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#C0392B 0% 53%, rgba(255,255,255,0.08) 53% 100%); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">40</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">Total</div>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#C0392B 0% 70%, rgba(255,255,255,0.08) 70% 100%); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">7</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">Pediatric</div>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#C0392B 0% 60%, rgba(255,255,255,0.08) 60% 100%); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">3</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">ECMO/VAD</div>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#22c55e 0% 100%); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">22</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">CABG</div>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#C0392B 0% 90%, rgba(255,255,255,0.08) 90% 100%); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">9</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">Valve</div>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); text-align: center; padding: 8px 2px;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.08); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center;"><div style="width: 19px; height: 19px; border-radius: 50%; background: #111c2d; display: flex; align-items: center; justify-content: center;"><span style="font-family: Oswald, sans-serif; font-size: 7px; font-weight: 700; color: white;">0</span></div></div>
+                    <div style="font-size: 6px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em;">Transplant</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-caption">
+            <div class="feature-caption-title">Cases</div>
+            <div class="feature-caption-desc">All six ABCP subcategories tracked live, one tap to repeat your last case, one tap to export.</div>
+          </div>
+        </div>
+
       </div>
-      <div class="reveal">
-        <div style="position: relative; background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.35);">
-          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
-            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
+
+      <div class="feature-dots">
+        <span class="feature-dot" style="background: #C0392B;"></span>
+        <span class="feature-dot"></span>
+        <span class="feature-dot"></span>
+        <span class="feature-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON — Pre-Perfusion + CCP, compact and secondary since neither is live yet -->
+  <section style="padding: 80px 40px; background: var(--white-ghost); border-top: 1px solid var(--white-faint); border-bottom: 1px solid var(--white-faint);">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="text-align:center; margin-bottom: 40px;">
+        <div class="section-label">What's Next</div>
+        <h2 class="problem-headline" style="font-size: clamp(1.5rem, 3.2vw, 2.2rem); margin-bottom: 0;">Before Student. After CCP.</h2>
+      </div>
+      <div class="coming-soon-grid">
+        <div class="coming-soon-card reveal">
+          <div class="coming-soon-head">
+            <span class="coming-soon-tag">Pre-Perfusion</span>
+            <span class="coming-soon-badge">Coming Soon</span>
           </div>
-          <div style="padding: 20px; background: #111c2d;">
-            <div style="height: 10px; width: 55%; background: rgba(255,255,255,0.07); border-radius: 2px; margin-bottom: 14px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 10px;"></div>
-            <div style="height: 34px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px;"></div>
+          <h3 class="coming-soon-title">Getting in.</h3>
+          <p class="coming-soon-desc">Shadow hours logged, all 23 accredited programs compared side by side, requirements tracked against each one.</p>
+          <ul class="coming-soon-list">
+            <li>Shadow hour log with PDF export</li>
+            <li>23 program requirements, side by side</li>
+            <li>CCP finder in your area</li>
+          </ul>
+        </div>
+        <div class="coming-soon-card reveal">
+          <div class="coming-soon-head">
+            <span class="coming-soon-tag">Certified CCP</span>
+            <span class="coming-soon-badge">Coming Soon</span>
           </div>
-          <div style="position: absolute; inset: 0; background: rgba(19,31,56,0.62); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center;">
-            <div style="width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            </div>
-            <div>
-              <div style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 6px;">In Development</div>
-              <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.5;">Hospital Directory — equipment, culture, and hiring status by facility</div>
-            </div>
-          </div>
+          <h3 class="coming-soon-title">Owning it.</h3>
+          <p class="coming-soon-desc">CEU tracking, job alerts by region, and real crowdsourced data on hospitals before you sign.</p>
+          <ul class="coming-soon-list">
+            <li>CEU tracking and renewal reminders</li>
+            <li>Job openings by region</li>
+            <li>Hospital directory — equipment, culture, hiring</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -899,257 +1173,12 @@
   <footer>
     <div class="footer-logo"><span>PERF</span><span>PATH</span></div>
     <div class="footer-note">© 2026 PerfPath · perfpath.com</div>
+    <div style="display: flex; gap: 20px; align-items: center;">
+      <a href="https://app.perfpath.com/privacy" class="footer-note" style="text-decoration: none;">Privacy</a>
+      <a href="https://app.perfpath.com/terms" class="footer-note" style="text-decoration: none;">Terms</a>
+    </div>
     <div class="footer-note">Built from inside the pipeline.</div>
   </footer>
-
-  <!-- APP PREVIEW LIGHTBOX -->
-  <div id="preview-lightbox" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(10,16,28,0.94); backdrop-filter: blur(4px); align-items:center; justify-content:center; padding:24px;">
-    <button id="preview-close" aria-label="Close preview" style="position:absolute; top:24px; right:24px; width:36px; height:36px; border:1px solid rgba(255,255,255,0.15); background:transparent; color:rgba(255,255,255,0.6); font-size:16px; cursor:pointer;">✕</button>
-    <button id="preview-prev" aria-label="Previous screen" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); width:40px; height:40px; border:1px solid rgba(255,255,255,0.15); background:transparent; color:rgba(255,255,255,0.5); cursor:pointer; font-size:16px;">←</button>
-    <button id="preview-next" aria-label="Next screen" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); width:40px; height:40px; border:1px solid rgba(255,255,255,0.15); background:transparent; color:rgba(255,255,255,0.5); cursor:pointer; font-size:16px;">→</button>
-
-    <div style="max-width: 360px; width: 100%; text-align: center;">
-
-      <!-- SLIDE 1: DASHBOARD -->
-      <div class="preview-slide" style="display:block;">
-        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
-          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
-            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
-          </div>
-          <div style="padding: 16px; background: #111c2d;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;">
-              <div>
-                <div style="font-size: 9px; color: rgba(192,57,43,0.8); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">● Student — Active</div>
-                <div style="font-family: Oswald, sans-serif; font-size: 16px; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase;">Good Evening,<br>Demo</div>
-              </div>
-              <div style="text-align: right;">
-                <div style="font-family: Oswald, sans-serif; font-size: 18px; font-weight: 700; color: white;">22<span style="color:#C0392B;">:</span>02<span style="font-size:11px; color:rgba(255,255,255,0.25);">42</span></div>
-                <div style="font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em;">SAT · JUL 4</div>
-              </div>
-            </div>
-            <div style="margin-bottom: 12px;">
-              <div style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px;">Protocol Reminder</div>
-              <div style="font-size: 10px; color: rgba(255,255,255,0.55); font-style: italic;">VA-ECMO Initiation &amp; Management →</div>
-            </div>
-            <div style="background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 11px; padding: 10px; text-align: center; margin-bottom: 10px;">+ LOG CASE</div>
-            <div style="display: flex; justify-content: space-around; padding: 8px 0 14px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 14px;">
-              <span style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">Cases</span>
-              <span style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">Protocols</span>
-              <span style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">Calendar</span>
-              <span style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">Profile</span>
-            </div>
-            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 12px; margin-bottom: 14px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span style="font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">ABCP Progress</span>
-                <span style="font-size: 9px; color: rgba(192,57,43,0.7); border: 1px solid rgba(192,57,43,0.2); padding: 2px 6px;">40 / 75</span>
-              </div>
-              <div style="margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span style="font-size: 9px; color: rgba(255,255,255,0.5);">Total Cases</span><span style="font-size: 9px; color: rgba(255,255,255,0.4);">40 / 75</span></div>
-                <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;"><div style="width: 53%; height: 3px; background: #C0392B; border-radius: 2px;"></div></div>
-              </div>
-              <div style="margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span style="font-size: 9px; color: rgba(255,255,255,0.5);">Pediatric</span><span style="font-size: 9px; color: rgba(255,255,255,0.4);">7 / 10</span></div>
-                <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;"><div style="width: 70%; height: 3px; background: #C0392B; border-radius: 2px;"></div></div>
-              </div>
-              <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span style="font-size: 9px; color: rgba(255,255,255,0.5);">ECMO / VAD</span><span style="font-size: 9px; color: rgba(255,255,255,0.4);">3 / 5</span></div>
-                <div style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;"><div style="width: 60%; height: 3px; background: #C0392B; border-radius: 2px;"></div></div>
-              </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">Today's Cases</span>
-              <span style="font-size: 9px; color: #C0392B; letter-spacing: 0.05em;">+ Plan Ahead</span>
-            </div>
-            <div style="border: 1px dashed rgba(255,255,255,0.12); padding: 14px; text-align: center; margin-bottom: 16px;">
-              <span style="font-size: 9px; color: rgba(255,255,255,0.25); letter-spacing: 0.05em; text-transform: uppercase;">No Cases Today · Tap To Log</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;">This Week's Goals</span>
-              <span style="font-size: 9px; color: #C0392B; letter-spacing: 0.05em;">View All →</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 10px 12px; display: flex; align-items: center; gap: 10px;">
-                <div style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); flex-shrink: 0;"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: white;">Log 3 ECMO cases</div><div style="font-size: 8px; color: rgba(255,255,255,0.3);">Due Wed, Jul 1</div></div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 10px 12px; display: flex; align-items: center; gap: 10px; opacity: 0.5;">
-                <div style="width: 12px; height: 12px; border-radius: 50%; background: #C0392B; flex-shrink: 0;"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: rgba(255,255,255,0.5); text-decoration: line-through;">Reach 50 total cases</div><div style="font-size: 8px; color: rgba(255,255,255,0.25);">Completed</div></div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 10px 12px; display: flex; align-items: center; gap: 10px; opacity: 0.5;">
-                <div style="width: 12px; height: 12px; border-radius: 50%; background: #C0392B; flex-shrink: 0;"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: rgba(255,255,255,0.5); text-decoration: line-through;">Review Del Nido cardioplegia protocol</div><div style="font-size: 8px; color: rgba(255,255,255,0.25);">Completed</div></div>
-              </div>
-            </div>
-          </div>
-          <div style="background: #0d1520; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-around; padding: 10px 0;">
-            <span style="font-size: 8px; color: #C0392B; letter-spacing: 0.05em; text-transform: uppercase;">Home</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Cases</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Log</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Study</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Profile</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 2: STUDY -->
-      <div class="preview-slide" style="display:none;">
-        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
-          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
-            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
-          </div>
-          <div style="padding: 16px; background: #111c2d;">
-            <div style="font-family: Oswald, sans-serif; font-size: 16px; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase;">Study</div>
-            <div style="font-size: 9px; color: rgba(255,255,255,0.3); margin-bottom: 16px;">Protocol library · Case notes · Lecture notes</div>
-
-            <div style="background: rgba(192,57,43,0.06); border: 1px solid rgba(192,57,43,0.25); padding: 16px; margin-bottom: 10px;">
-              <span style="font-size: 8px; color: #C0392B; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(192,57,43,0.4); padding: 2px 6px;">Clinical Reference</span>
-              <div style="font-family: Oswald, sans-serif; font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.03em; text-transform: uppercase; margin: 10px 0 6px;">Protocol Library</div>
-              <div style="font-size: 9px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-bottom: 10px;">Anticoagulation, priming, cardioplegia, ECMO, weaning. Built for the OR hallway.</div>
-              <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 9px; color: rgba(255,255,255,0.3);">15 topics</span><span style="color: #C0392B; font-size: 12px;">→</span></div>
-            </div>
-
-            <div style="background: rgba(96,165,250,0.05); border: 1px solid rgba(96,165,250,0.25); padding: 16px; margin-bottom: 10px;">
-              <span style="font-size: 8px; color: #60A5FA; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(96,165,250,0.4); padding: 2px 6px;">From Your Cases</span>
-              <div style="font-family: Oswald, sans-serif; font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.03em; text-transform: uppercase; margin: 10px 0 6px;">Case Notes</div>
-              <div style="font-size: 9px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-bottom: 10px;">Every note from every case you've logged. Searchable by procedure, hospital, or date.</div>
-              <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 9px; color: rgba(255,255,255,0.3);">18 notes</span><span style="color: #60A5FA; font-size: 12px;">→</span></div>
-            </div>
-
-            <div style="background: rgba(74,222,128,0.05); border: 1px solid rgba(74,222,128,0.25); padding: 16px;">
-              <span style="font-size: 8px; color: #4ADE80; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(74,222,128,0.4); padding: 2px 6px;">Personal Notes</span>
-              <div style="font-family: Oswald, sans-serif; font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.03em; text-transform: uppercase; margin: 10px 0 6px;">Lecture Notes</div>
-              <div style="font-size: 9px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-bottom: 10px;">Quick notes from class, analogies that clicked, things worth remembering.</div>
-              <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 9px; color: rgba(255,255,255,0.3);">5 notes</span><span style="color: #4ADE80; font-size: 12px;">→</span></div>
-            </div>
-          </div>
-          <div style="background: #0d1520; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-around; padding: 10px 0;">
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Home</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Cases</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Log</span>
-            <span style="font-size: 8px; color: #C0392B; letter-spacing: 0.05em; text-transform: uppercase;">Study</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Profile</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 3: PROFILE -->
-      <div class="preview-slide" style="display:none;">
-        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
-          <div style="background: #0d1520; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 6px;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
-            <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px;"></div>
-          </div>
-          <div style="padding: 16px; background: #111c2d;">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
-              <div style="width: 40px; height: 40px; border-radius: 50%; background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">DU</div>
-              <div>
-                <div style="font-family: Oswald, sans-serif; font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.03em; text-transform: uppercase;">Demo User</div>
-                <div style="font-size: 9px; color: rgba(255,255,255,0.4);">demo@perfpath.com</div>
-                <div style="font-size: 8px; color: rgba(255,255,255,0.25); letter-spacing: 0.05em; text-transform: uppercase;">Member Since August 2025</div>
-              </div>
-            </div>
-
-            <div style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">Current Stage</div>
-            <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;">
-              <div style="padding: 10px 12px; display: flex; align-items: center; gap: 10px; opacity: 0.4;">
-                <div style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3);"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: white; font-weight: 600;">Pre-Perfusion</div><div style="font-size: 8px; color: rgba(255,255,255,0.4);">Exploring the field before applying</div></div>
-                <span style="font-size: 7px; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.15); padding: 2px 5px;">Soon</span>
-              </div>
-              <div style="background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.35); padding: 10px 12px; display: flex; align-items: center; gap: 10px;">
-                <div style="width: 6px; height: 6px; border-radius: 50%; background: #C0392B;"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: white; font-weight: 600;">Student</div><div style="font-size: 8px; color: rgba(255,255,255,0.5);">Enrolled in an accredited perfusion program</div></div>
-                <span style="color: #C0392B; font-size: 11px;">✓</span>
-              </div>
-              <div style="padding: 10px 12px; display: flex; align-items: center; gap: 10px; opacity: 0.4;">
-                <div style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3);"></div>
-                <div style="flex: 1;"><div style="font-size: 10px; color: white; font-weight: 600;">Certified CCP</div><div style="font-size: 8px; color: rgba(255,255,255,0.4);">Board certified clinical perfusionist</div></div>
-                <span style="font-size: 7px; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.15); padding: 2px 5px;">Soon</span>
-              </div>
-            </div>
-
-            <div style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">Program Info</div>
-            <div style="margin-bottom: 10px;">
-              <div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Program</div>
-              <div style="display: flex; gap: 6px;">
-                <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">Search programs...</div>
-                <div style="background: #C0392B; color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; padding: 8px 12px;">Save</div>
-              </div>
-            </div>
-            <div style="margin-bottom: 16px;">
-              <div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Expected Graduation</div>
-              <div style="display: flex; gap: 6px;">
-                <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">mm/dd/yyyy</div>
-                <div style="background: #C0392B; color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; padding: 8px 12px;">Save</div>
-              </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.06); margin-bottom: 12px;">
-              <div style="background: #111c2d; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 10px; color: rgba(255,255,255,0.7);">ABCP Requirements</span><span style="color: rgba(255,255,255,0.2); font-size: 11px;">›</span></div>
-              <div style="background: #111c2d; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 10px; color: rgba(255,255,255,0.7);">My Goals</span><span style="color: rgba(255,255,255,0.2); font-size: 11px;">›</span></div>
-            </div>
-            <div style="border: 1px solid rgba(255,255,255,0.1); padding: 10px; text-align: center; font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase;">Sign Out</div>
-          </div>
-          <div style="background: #0d1520; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-around; padding: 10px 0;">
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Home</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Cases</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Log</span>
-            <span style="font-size: 8px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase;">Study</span>
-            <span style="font-size: 8px; color: #C0392B; letter-spacing: 0.05em; text-transform: uppercase;">Profile</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 4: LOG A CASE -->
-      <div class="preview-slide" style="display:none;">
-        <div class="preview-card" style="background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; max-width: 340px; max-height: 78vh; overflow-y: auto; margin: 0 auto; box-shadow: 0 32px 64px rgba(0,0,0,0.5); text-align: left;">
-          <div style="background: #C0392B; height: 3px;"></div>
-          <div style="padding: 16px; background: #111c2d;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <div style="font-family: Oswald, sans-serif; font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase;">Log Case</div>
-              <span style="color: rgba(255,255,255,0.3); font-size: 14px;">✕</span>
-            </div>
-            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-              <div style="flex: 1;"><div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Date *</div><div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.6);">07/05/2026</div></div>
-              <div style="flex: 1;"><div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Hospital *</div><div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">Hospital name</div></div>
-            </div>
-            <div style="margin-bottom: 10px;"><div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Procedure Type *</div><div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">Select type...</div></div>
-            <div style="margin-bottom: 10px;">
-              <div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Your Role *</div>
-              <div style="display: flex; gap: 6px;">
-                <div style="flex: 1; text-align: center; border: 1px solid #C0392B; color: #C0392B; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 0;">Primary</div>
-                <div style="flex: 1; text-align: center; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 0;">Assistant</div>
-                <div style="flex: 1; text-align: center; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 0;">Observer</div>
-              </div>
-            </div>
-            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-              <div style="flex: 1;"><div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Bypass (min)</div><div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">e.g. 95</div></div>
-              <div style="flex: 1;"><div style="font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">X-Clamp (min)</div><div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 8px 10px; font-size: 9px; color: rgba(255,255,255,0.25);">e.g. 65</div></div>
-            </div>
-            <div style="border: 1px solid rgba(255,255,255,0.08); padding: 10px; margin-bottom: 12px;">
-              <div style="font-size: 7px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">CCP Instructor — Required by ABCP</div>
-              <div style="display: flex; gap: 6px; margin-bottom: 6px;">
-                <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 7px 9px; font-size: 8px; color: rgba(255,255,255,0.25);">First</div>
-                <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 7px 9px; font-size: 8px; color: rgba(255,255,255,0.25);">Last</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 7px 9px; font-size: 8px; color: rgba(255,255,255,0.25);">CCP number, e.g. 12345</div>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <div style="flex: 1; background: #C0392B; color: white; font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-size: 10px; padding: 10px; text-align: center;">Save Case</div>
-              <div style="flex: 1; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); font-family: Oswald, sans-serif; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 10px; padding: 10px; text-align: center;">Cancel</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 20px; font-family: Oswald, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35);">
-        <span id="preview-caption">Dashboard</span> · <span id="preview-count">1 / 4</span>
-      </div>
-    </div>
-  </div>
 
   <script>
     // Scroll reveal
@@ -1163,56 +1192,27 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // App preview lightbox
-    (function () {
-      const lightbox = document.getElementById('preview-lightbox');
-      const slides = document.querySelectorAll('.preview-slide');
-      const captionEl = document.getElementById('preview-caption');
-      const countEl = document.getElementById('preview-count');
-      const captions = ['Dashboard', 'Study', 'Profile', 'Log a Case'];
-      let current = 0;
-
-      function render() {
-        slides.forEach((s, i) => { s.style.display = i === current ? 'block' : 'none'; });
-        captionEl.textContent = captions[current];
-        countEl.textContent = (current + 1) + ' / ' + slides.length;
-      }
-
-      function openPreview() {
-        current = 0;
-        render();
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closePreview() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-
-      document.querySelectorAll('[data-open-preview]').forEach((btn) => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          openPreview();
+    // Feature slideshow — highlight the dot matching whichever slide is
+    // most centered in view. Works for both the arrow buttons and native
+    // touch swipe since both just move the same scroll container.
+    const track = document.getElementById('feature-track');
+    if (track) {
+      const slides = Array.from(track.querySelectorAll('.feature-slide'));
+      const dots = Array.from(document.querySelectorAll('.feature-dot'));
+      const updateDots = () => {
+        const trackCenter = track.scrollLeft + track.clientWidth / 2;
+        let closest = 0;
+        let closestDist = Infinity;
+        slides.forEach((slide, i) => {
+          const dist = Math.abs((slide.offsetLeft + slide.clientWidth / 2) - trackCenter);
+          if (dist < closestDist) { closestDist = dist; closest = i; }
         });
-      });
-
-      document.getElementById('preview-close').addEventListener('click', closePreview);
-      document.getElementById('preview-prev').addEventListener('click', function () {
-        current = (current - 1 + slides.length) % slides.length;
-        render();
-      });
-      document.getElementById('preview-next').addEventListener('click', function () {
-        current = (current + 1) % slides.length;
-        render();
-      });
-      lightbox.addEventListener('click', function (e) {
-        if (e.target === lightbox) closePreview();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closePreview();
-      });
-    })();
+        dots.forEach((dot, i) => {
+          dot.style.background = i === closest ? '#C0392B' : 'rgba(255,255,255,0.15)';
+        });
+      };
+      track.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
+    }
   </script>
 
 </body>
