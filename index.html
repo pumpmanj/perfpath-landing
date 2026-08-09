@@ -580,6 +580,13 @@
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .hero { padding: 100px 20px 60px; }
+      /* The headline's clamp() floor (2.8rem) only backs off once the viewport
+         is wide enough for 7vw to clear it — on phones it never does, so every
+         phone was rendering the desktop-max size at line-height:1.0, forcing
+         the 3 <br>-separated lines to overlap/crowd with zero breathing room.
+         That's the "squeezed" look. Scale it down and open up the line-height. */
+      .hero-headline { font-size: clamp(1.9rem, 8.5vw, 2.6rem); line-height: 1.25; letter-spacing: 0.02em; }
+      .bottom-cta .hero-headline { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
       .stat-bar { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--white-faint); }
       .stat-item:last-child { border-bottom: none; }
@@ -593,13 +600,18 @@
       footer { padding: 24px 20px; flex-direction: column; text-align: center; }
     }
 
+    /* This was the actual cause of the "squeezed" look: the selector below
+       was written as section[style*="..."], but the grid-template-columns
+       style lives on the DIV *inside* the section, not the section itself —
+       so this rule never matched anything, and the Student "Live Now" block
+       (headline, body copy, feature list, and the phone mockup) stayed
+       locked in a 2-column grid on every phone, each column squeezed to
+       roughly half the screen width. Targeting the actual class fixes it. */
     @media (max-width: 768px) {
-      section[style*="grid-template-columns: 1fr 1fr"] > div {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      section[style*="grid-template-columns: 1fr 1fr"] {
+      .student-live-section { padding: 60px 20px !important; }
+      .student-live-split {
         grid-template-columns: 1fr !important;
+        gap: 32px !important;
       }
     }
 
@@ -841,8 +853,8 @@
   </section>
 
   <!-- STUDENT — LIVE NOW (leads, since this is the only stage that's real today) -->
-  <section style="background: rgba(192,57,43,0.04); border-top: 1px solid rgba(192,57,43,0.12); border-bottom: 1px solid rgba(192,57,43,0.12); padding: 80px 40px;">
-    <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+  <section class="student-live-section" style="background: rgba(192,57,43,0.04); border-top: 1px solid rgba(192,57,43,0.12); border-bottom: 1px solid rgba(192,57,43,0.12); padding: 80px 40px;">
+    <div class="student-live-split" style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
       <div class="reveal" style="order: 2;">
         <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;">
           <span style="font-family: Oswald, sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #C0392B;">Student</span>
